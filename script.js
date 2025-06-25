@@ -43,6 +43,7 @@ function cargarPregunta() {
 
   p.opciones.forEach((opcion, i) => {
     const btn = document.createElement("button");
+    btn.classList.add("opcion");
     btn.innerText = opcion;
     btn.onclick = () => verificarRespuesta(i);
     contenedor.appendChild(btn);
