@@ -1,0 +1,16 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    padding: 20px;
+  }
+  header {
+    background: #eee;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    padding: 10px;
+    margin: 5px;
+  }
+  
