@@ -6,10 +6,22 @@
   <link rel="stylesheet" href="styles-login.css">
 </head>
 <body>
-  <h2>Iniciar sesión</h2>
-  <input id="username" placeholder="Nombre de usuario">
-  <input id="password" placeholder="Contraseña" type="password">
-  <button onclick="login()">Entrar</button>
+  <header class="main-header">
+    <div class="header-left">
+      <img src="https://campuslands.com/_astro/LogoCampuslands.B1kb7Hd-_1iubnD.svg" alt="logo" class="logo">
+    </div>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="login-container">
+    <h2>Iniciar sesión</h2>
+    <input id="username" placeholder="Nombre de usuario">
+    <input id="password" placeholder="Contraseña" type="password">
+    <button onclick="login()">Entrar</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
