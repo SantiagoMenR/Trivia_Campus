@@ -1,0 +1,198 @@
+:root {
+    --primary-color: #000466;
+    --secondary-color: #f9c846;
+    --text-color: #1a2a3a;
+    --background-color: #f9f6f2;
+    --card-bg: #fff;
+    --border-radius: 20px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  
+  body {
+    background: var(--background-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-header {
+    width: 100%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 70px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 48px;
+    margin-right: 10px;
+  }
+  
+  .brand {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  
+  .header-nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    position: relative;
+  }
+  
+  .header-nav a.active,
+  .header-nav a:hover {
+    color: var(--secondary-color);
+  }
+  
+  .rewards-main {
+    max-width: 900px;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+  }
+  
+  .rewards-header h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 0.2em;
+  }
+  
+  .rewards-header p {
+    color: var(--text-color);
+    margin-bottom: 1.5em;
+  }
+  
+  .user-card {
+    display: flex;
+    align-items: center;
+    background: #f9c846;
+    border-radius: var(--border-radius);
+    padding: 20px 30px;
+    margin-bottom: 1.5em;
+    gap: 20px;
+  }
+  
+  .user-avatar {
+    width: 60px;
+    height: 60px;
+    background: #2d3a4a;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user-card h2 {
+    margin: 0 0 0.2em 0;
+    color: #fff;
+  }
+  
+  .user-card p {
+    margin: 0.2em 0;
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2em;
+  }
+  
+  .filters button {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: var(--shadow);
+  }
+  
+  .filters button.active,
+  .filters button:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+  }
+  
+  .rewards-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  
+  .reward-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .reward-card img {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .reward-card h3 {
+    margin: 0.5em 0 0.2em 0;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+  }
+  
+  .reward-card p {
+    margin: 0.2em 0;
+    color: var(--text-color);
+    font-size: 0.98rem;
+  }
+  
+  .reward-card button {
+    margin-top: 1em;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .reward-card button:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+  }

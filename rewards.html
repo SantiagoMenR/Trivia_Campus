@@ -2,14 +2,56 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Recompensas</title>
+  <title>Recompensas Campuslands</title>
   <link rel="stylesheet" href="styles-rewards.css">
 </head>
-<body onload="mostrarRecompensas()">
-  <h2>Recompensas</h2>
-  <div id="listaRecompensas"></div>
-  <button onclick="window.location.href='main.html'">Volver</button>
-
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <img src="https://campuslands.com/_astro/LogoCampuslands.B1kb7Hd-_1iubnD.svg" alt="logo" class="logo">
+    </div>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="rewards-main">
+    <section class="rewards-header">
+      <h1>🎁 Recompensas Campuslands</h1>
+      <p>Canjea tus puntos por premios increíbles. ¡Sigue aprendiendo y gana!</p>
+      <div class="user-card">
+        <div class="user-avatar"></div>
+        <div>
+          <h2 id="userName">Usuario</h2>
+          <p>⭐ Puntos acumulados: <b id="userPoints">0</b></p>
+          <p>🏆 Nivel: Explorador | Progreso: 65%</p>
+        </div>
+      </div>
+      <div class="filters">
+        <button class="active">Todos</button>
+        <button>Disponibles</button>
+        <button>No disponibles</button>
+      </div>
+    </section>
+    <section class="rewards-list">
+      <div class="reward-card">
+        <img src="https://img.icons8.com/color/96/t-shirt.png" alt="Camiseta Campuslands">
+        <h3>👕 Camiseta Campuslands</h3>
+        <p>📁 Categoría: Merch</p>
+        <p>⭐ Costo: 1500 puntos</p>
+        <button>Canjear</button>
+      </div>
+      <div class="reward-card">
+        <img src="https://img.icons8.com/color/96/water-bottle.png" alt="Botella térmica">
+        <h3>🧴 Botella térmica</h3>
+        <p>📁 Categoría: Merch</p>
+        <p>⭐ Costo: 2000 puntos</p>
+        <button>Canjear</button>
+      </div>
+      <!-- Más tarjetas aquí -->
+    </section>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
