@@ -106,3 +106,88 @@ function mostrarDatosUsuarioRewards() {
 
 // Ejecutar automáticamente en rewards.html
 window.addEventListener('DOMContentLoaded', mostrarDatosUsuarioRewards);
+
+// --- MODAL DE CANJE Y CARRUSEL ---
+
+// Datos de ejemplo para productos con variantes de color
+const productosRecompensa = [
+  {
+    nombre: 'Camiseta Campuslands',
+    categoria: 'Merch',
+    costo: 1500,
+    imagenes: [
+      './img recompensas/descarga.png',
+      'https://img.icons8.com/color/96/t-shirt.png',
+      'https://img.icons8.com/color/96/t-shirt.png' // Puedes poner más variantes
+    ]
+  },
+  {
+    nombre: 'Botella térmica',
+    categoria: 'Merch',
+    costo: 2000,
+    imagenes: [
+      'https://img.icons8.com/color/96/water-bottle.png',
+      'https://img.icons8.com/color/96/water-bottle.png',
+      'https://img.icons8.com/color/96/water-bottle.png' // Variantes
+    ]
+  }
+  // Agrega más productos si lo deseas
+];
+
+let productoActual = null;
+let colorIndex = 0;
+
+function abrirModalCanje(indexProducto) {
+  productoActual = productosRecompensa[indexProducto];
+  colorIndex = 0;
+  document.getElementById('modalProductName').textContent = productoActual.nombre;
+  document.getElementById('modalProductCategory').textContent = '📁 Categoría: ' + productoActual.categoria;
+  document.getElementById('modalProductCost').textContent = '⭐ Costo: ' + productoActual.costo + ' puntos';
+  document.getElementById('carouselImage').src = productoActual.imagenes[colorIndex];
+  actualizarMensajePuntos();
+  document.getElementById('modal-canjear').style.display = 'flex';
+}
+
+function actualizarMensajePuntos() {
+  const puntos = parseInt(localStorage.getItem('userPoints') || localStorage.getItem('puntos') || '0');
+  if (puntos >= productoActual.costo) {
+    document.getElementById('modalPointsMsg').textContent = '¡Tienes puntos suficientes para canjear este producto!';
+    document.getElementById('confirmCanjeBtn').disabled = false;
+  } else {
+    document.getElementById('modalPointsMsg').textContent = 'No tienes puntos suficientes para canjear este producto.';
+    document.getElementById('confirmCanjeBtn').disabled = true;
+  }
+}
+
+document.getElementById('closeModalBtn').onclick = function() {
+  document.getElementById('modal-canjear').style.display = 'none';
+};
+document.getElementById('prevColor').onclick = function() {
+  colorIndex = (colorIndex - 1 + productoActual.imagenes.length) % productoActual.imagenes.length;
+  document.getElementById('carouselImage').src = productoActual.imagenes[colorIndex];
+};
+document.getElementById('nextColor').onclick = function() {
+  colorIndex = (colorIndex + 1) % productoActual.imagenes.length;
+  document.getElementById('carouselImage').src = productoActual.imagenes[colorIndex];
+};
+document.getElementById('confirmCanjeBtn').onclick = function() {
+  const puntos = parseInt(localStorage.getItem('userPoints') || localStorage.getItem('puntos') || '0');
+  if (puntos >= productoActual.costo) {
+    localStorage.setItem('userPoints', puntos - productoActual.costo);
+    if(localStorage.getItem('puntos')) localStorage.setItem('puntos', puntos - productoActual.costo);
+    mostrarDatosUsuarioRewards();
+    alert('¡Canje realizado con éxito!');
+    document.getElementById('modal-canjear').style.display = 'none';
+  }
+};
+
+// Adaptar los botones "Canjear" para abrir el modal con el producto correcto
+window.addEventListener('DOMContentLoaded', () => {
+  mostrarDatosUsuarioRewards && mostrarDatosUsuarioRewards();
+  const canjearBtns = document.querySelectorAll('.reward-card button');
+  canjearBtns.forEach((btn, i) => {
+    btn.onclick = function() {
+      abrirModalCanje(i % productosRecompensa.length);
+    };
+  });
+});
