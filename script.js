@@ -58,10 +58,10 @@ function verificarRespuesta(i) {
     puntos += 10;
     resultadoDiv.innerText = "¡Correcto! +10 puntos";
     resultadoDiv.classList.remove("hidden");
-    resultadoDiv.style.color = "green";
+    resultadoDiv.style.textShadow = "0 0 20px #00FF00";
   } else {
     resultadoDiv.innerText = "Incorrecto";
-    resultadoDiv.style.color = "red";
+    resultadoDiv.style.textShadow = "0 0 20px #FF0000";
     resultadoDiv.classList.remove("hidden");
   }
 
