@@ -8,7 +8,7 @@ body {
     font-family: Arial;
     text-align: center;
     padding: 20px;
-    background-color: #0028E0;
+    background: linear-gradient(to bottom, #001676, #1FE097);
     color: white;
     display: flex;
     flex-direction: column;
@@ -44,4 +44,4 @@ button{
 button:hover{
   background-color: #1FE097;
 }
-  
+

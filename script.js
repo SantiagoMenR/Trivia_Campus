@@ -52,17 +52,29 @@ function cargarPregunta() {
 
 function verificarRespuesta(i) {
   const p = preguntas[indice];
+  const resultadoDiv = document.getElementById("resultado");
+  
   if (i === p.correcta) {
     puntos += 10;
-    alert("¡Correcto! +10 puntos");
+    resultadoDiv.innerText = "¡Correcto! +10 puntos";
+    resultadoDiv.classList.remove("hidden");
+    resultadoDiv.style.color = "green";
   } else {
-    alert("Incorrecto");
+    resultadoDiv.innerText = "Incorrecto";
+    resultadoDiv.style.color = "red";
+    resultadoDiv.classList.remove("hidden");
   }
 
   localStorage.setItem("puntos", puntos);
   indice = (indice + 1) % preguntas.length;
   cargarPregunta();
   cargarUsuario();
+  
+  // Limpiar el mensaje después de 2 segundos
+  setTimeout(() => {
+    resultadoDiv.innerText = "";
+    resultadoDiv.classList.add("hidden");
+  }, 2000);
 }
 
 const recompensas = [
