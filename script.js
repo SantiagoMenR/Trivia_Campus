@@ -93,3 +93,16 @@ function canjear(costo) {
     alert("No tienes suficientes puntos.");
   }
 }
+
+// Mostrar datos en rewards.html
+function mostrarDatosUsuarioRewards() {
+  const userName = localStorage.getItem('username') || localStorage.getItem('usuario') || 'Usuario';
+  const userPoints = localStorage.getItem('userPoints') || localStorage.getItem('puntos') || '0';
+  if(document.getElementById('userName'))
+    document.getElementById('userName').textContent = userName;
+  if(document.getElementById('userPoints'))
+    document.getElementById('userPoints').textContent = userPoints;
+}
+
+// Ejecutar automáticamente en rewards.html
+window.addEventListener('DOMContentLoaded', mostrarDatosUsuarioRewards);
