@@ -21,15 +21,76 @@ function cargarUsuario() {
 
 const preguntas = [
   {
-    texto: "¿Cuál es la capital de Colombia?",
-    opciones: ["Bogotá", "Medellín", "Cali"],
-    correcta: 0
-  },
-  {
     texto: "¿Qué lenguaje se usa para la web?",
     opciones: ["Python", "HTML", "C++"],
     correcta: 1
+  },
+  {
+    texto: "¿Cuál es la sede principal de Campuslands?",
+    opciones: ["Cúcuta", "Tibú", "Bucaramanga"],
+    correcta: 2
+  },
+  {
+    texto: "¿Cuánto tiempo dura la formación intensiva en Campuslands?",
+    opciones: ["6 meses", "10 meses", "1 año y medio"],
+    correcta: 1
+  },
+  {
+    texto: "¿Cuál de las siguientes áreas NO hace parte del enfoque principal de Campuslands?",
+    opciones: ["Desarrollo de software", "Inglés", "Medicina"],
+    correcta: 2
+  },
+  {
+    texto: "¿Cuál de estas ciudades NO tiene sede de Campuslands?",
+    opciones: ["Bogotá", "Tibú", "Medellín"],
+    correcta: 2
+  },
+  {
+    texto: "¿Qué habilidades complementarias se fortalecen en Campuslands además de lo técnico?",
+    opciones: ["Habilidades blandas", "Contabilidad", "Cocina"],
+    correcta: 0
+  },
+  {
+    texto: "¿Qué idioma se enseña como parte del programa en Campuslands?",
+    opciones: ["Portugués", "Francés", "Inglés"],
+    correcta: 2
+  },
+  {
+    texto: "¿Cuál es uno de los objetivos principales de Campuslands?",
+    opciones: ["Formar atletas profesionales", "Formar desarrolladores integrales", "Formar músicos clásicos"],
+    correcta: 1
+  },
+  {
+    texto: "¿Qué tipo de formación ofrece Campuslands?",
+    opciones: ["Virtual 100%", "Presencial intensiva", "Solo fines de semana"],
+    correcta: 1
+  },
+  {
+    texto: "¿Qué se espera de los estudiantes en Campuslands además del aprendizaje técnico?",
+    opciones: ["Habilidad para trabajar en equipo", "Conocimiento en biología", "Experiencia en arquitectura"],
+    correcta: 0
+  },
+  {
+    texto: "¿Qué ciudad de la frontera colombo-venezolana tiene una sede de Campuslands?",
+    opciones: ["Tibú", "Cúcuta", "Leticia"],
+    correcta: 1
+  },
+  {
+    texto: "¿Cómo se caracteriza la formación en Campuslands?",
+    opciones: ["Teórica y flexible", "Libre y asistida", "Práctica e intensiva"],
+    correcta: 2
+  },
+  {
+    texto: "¿Cuál es una de las fortalezas clave de Campuslands?",
+    opciones: ["Ofrecer carreras universitarias", "Desarrollar habilidades blandas", "Brindar cursos de cocina"],
+    correcta: 1
+  },
+  {
+    texto: "¿Qué rol tiene el inglés en Campuslands?",
+    opciones: ["Es opcional", "Es parte fundamental del programa", "Solo se enseña en los últimos meses"],
+    correcta: 1
   }
+  
 ];
 
 let indice = 0;
@@ -52,17 +113,29 @@ function cargarPregunta() {
 
 function verificarRespuesta(i) {
   const p = preguntas[indice];
+  const resultadoDiv = document.getElementById("resultado");
+  
   if (i === p.correcta) {
     puntos += 10;
-    alert("¡Correcto! +10 puntos");
+    resultadoDiv.innerText = "¡Correcto! +10 puntos";
+    resultadoDiv.classList.remove("hidden");
+    resultadoDiv.style.textShadow = "0 0 20px #00FF00";
   } else {
-    alert("Incorrecto");
+    resultadoDiv.innerText = "Incorrecto";
+    resultadoDiv.style.textShadow = "0 0 20px #FF0000";
+    resultadoDiv.classList.remove("hidden");
   }
 
   localStorage.setItem("puntos", puntos);
   indice = (indice + 1) % preguntas.length;
   cargarPregunta();
   cargarUsuario();
+  
+  // Limpiar el mensaje después de 2 segundos
+  setTimeout(() => {
+    resultadoDiv.innerText = "";
+    resultadoDiv.classList.add("hidden");
+  }, 2000);
 }
 
 const recompensas = [
