@@ -16,6 +16,86 @@ body {
     justify-content: center;
     height: 100vh;
     gap: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fondo de estrellas */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #ddd, transparent),
+        radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 240px 90px, #fff, transparent),
+        radial-gradient(1px 1px at 280px 20px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 320px 70px, #eee, transparent),
+        radial-gradient(1px 1px at 360px 40px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 400px 80px, #fff, transparent),
+        radial-gradient(1px 1px at 440px 30px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 480px 60px, #ddd, transparent),
+        radial-gradient(1px 1px at 520px 90px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 560px 20px, #fff, transparent),
+        radial-gradient(1px 1px at 600px 70px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 640px 40px, #eee, transparent),
+        radial-gradient(1px 1px at 680px 80px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 720px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 760px 60px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 800px 90px, #ddd, transparent),
+        radial-gradient(1px 1px at 840px 20px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 880px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 920px 40px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 960px 80px, #eee, transparent);
+    background-repeat: repeat;
+    background-size: 1000px 1000px;
+    animation: twinkle 4s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Estrellas adicionales con diferentes velocidades */
+.estrella-brillante {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: #FFD700;
+    border-radius: 50%;
+    animation: brillar 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+.estrella-brillante:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.estrella-brillante:nth-child(2) { top: 20%; left: 85%; animation-delay: 0.5s; }
+.estrella-brillante:nth-child(3) { top: 30%; left: 25%; animation-delay: 1s; }
+.estrella-brillante:nth-child(4) { top: 40%; left: 75%; animation-delay: 1.5s; }
+.estrella-brillante:nth-child(5) { top: 50%; left: 35%; animation-delay: 2s; }
+.estrella-brillante:nth-child(6) { top: 60%; left: 65%; animation-delay: 0.3s; }
+.estrella-brillante:nth-child(7) { top: 70%; left: 45%; animation-delay: 0.8s; }
+.estrella-brillante:nth-child(8) { top: 80%; left: 55%; animation-delay: 1.3s; }
+
+@keyframes brillar {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1);
+        box-shadow: 0 0 5px #FFD700;
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.5);
+        box-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700;
+    }
 }
 
 .logo {
@@ -45,3 +125,34 @@ button:hover{
   background-color: #1FE097;
 }
 
+@keyframes moverDerecha {
+  0% { left: 75%; }
+  50% { left: 77%; }
+  100% { left: 75%; }
+}
+
+@keyframes flotarAstronauta {
+  0% { bottom: 0; left: 5%; }
+  50% { bottom: 20px; left: 7%; }
+  100% { bottom: 0; left: 5%; }
+}
+
+.hologram{
+  position: absolute;
+  bottom: 0;
+  left: 75%;
+  width: 300px;
+  height: 300px;
+  z-index: 1000;
+  animation: moverDerecha 4s ease-in-out infinite;
+}
+
+.astronaut{
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 300px;
+  height: 300px;
+  z-index: 1000;
+  animation: flotarAstronauta 5s ease-in-out infinite;
+}
