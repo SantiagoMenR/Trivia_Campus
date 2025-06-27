@@ -254,13 +254,46 @@ document.getElementById('confirmCanjeBtn').onclick = function() {
   }
 };
 
-// Adaptar los botones "Canjear" para abrir el modal con el producto correcto
+// Crear partículas espaciales dinámicamente
+function crearParticulasEspaciales() {
+  const contenedor = document.getElementById('spaceParticles');
+  if (!contenedor) return;
+  
+  // Limpiar partículas existentes
+  contenedor.innerHTML = '';
+  
+  for (let i = 0; i < 15; i++) {
+    const particula = document.createElement('div');
+    particula.className = 'particle';
+    particula.style.left = Math.random() * 100 + '%';
+    particula.style.animationDelay = Math.random() * 6 + 's';
+    particula.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    contenedor.appendChild(particula);
+  }
+}
+
+// Función específica para el login
+function inicializarLogin() {
+  crearParticulasEspaciales();
+}
+
+// Ejecutar animaciones temáticas
 window.addEventListener('DOMContentLoaded', () => {
-  mostrarDatosUsuarioRewards && mostrarDatosUsuarioRewards();
-  const canjearBtns = document.querySelectorAll('.reward-card button');
-  canjearBtns.forEach((btn, i) => {
-    btn.onclick = function() {
-      abrirModalCanje(i % productosRecompensa.length);
-    };
-  });
+  // Verificar si estamos en la página de login
+  if (document.querySelector('.login-container')) {
+    inicializarLogin();
+  }
+  
+  // Verificar si estamos en la página de rewards
+  if (document.querySelector('.rewards-main')) {
+    mostrarDatosUsuarioRewards && mostrarDatosUsuarioRewards();
+    crearParticulasEspaciales();
+    
+    const canjearBtns = document.querySelectorAll('.reward-card button');
+    canjearBtns.forEach((btn, i) => {
+      btn.onclick = function() {
+        abrirModalCanje(i % productosRecompensa.length);
+      };
+    });
+  }
 });
