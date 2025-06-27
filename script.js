@@ -116,8 +116,8 @@ function verificarRespuesta(i) {
   const resultadoDiv = document.getElementById("resultado");
   
   if (i === p.correcta) {
-    puntos += 10;
-    resultadoDiv.innerText = "¡Correcto! +10 puntos";
+    puntos += 100;
+    resultadoDiv.innerText = "¡Correcto! +100 puntos";
     resultadoDiv.classList.remove("hidden");
     resultadoDiv.style.textShadow = "0 0 20px #00FF00";
   } else {
