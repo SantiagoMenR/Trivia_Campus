@@ -179,3 +179,121 @@ function mostrarDatosUsuarioRewards() {
 
 // Ejecutar automáticamente en rewards.html
 window.addEventListener('DOMContentLoaded', mostrarDatosUsuarioRewards);
+
+// --- MODAL DE CANJE Y CARRUSEL ---
+
+// Datos de ejemplo para productos con variantes de color
+const productosRecompensa = [
+  {
+    nombre: 'Camiseta Campuslands',
+    categoria: 'Merch',
+    costo: 1500,
+    imagenes: [
+      './img recompensas/descarga.png',
+      'https://img.icons8.com/color/96/t-shirt.png',
+      'https://img.icons8.com/color/96/t-shirt.png' // Puedes poner más variantes
+    ]
+  },
+  {
+    nombre: 'Botella térmica',
+    categoria: 'Merch',
+    costo: 2000,
+    imagenes: [
+      'https://img.icons8.com/color/96/water-bottle.png',
+      'https://img.icons8.com/color/96/water-bottle.png',
+      'https://img.icons8.com/color/96/water-bottle.png' // Variantes
+    ]
+  }
+  // Agrega más productos si lo deseas
+];
+
+let productoActual = null;
+let colorIndex = 0;
+
+function abrirModalCanje(indexProducto) {
+  productoActual = productosRecompensa[indexProducto];
+  colorIndex = 0;
+  document.getElementById('modalProductName').textContent = productoActual.nombre;
+  document.getElementById('modalProductCategory').textContent = '📁 Categoría: ' + productoActual.categoria;
+  document.getElementById('modalProductCost').textContent = '⭐ Costo: ' + productoActual.costo + ' puntos';
+  document.getElementById('carouselImage').src = productoActual.imagenes[colorIndex];
+  actualizarMensajePuntos();
+  document.getElementById('modal-canjear').style.display = 'flex';
+}
+
+function actualizarMensajePuntos() {
+  const puntos = parseInt(localStorage.getItem('userPoints') || localStorage.getItem('puntos') || '0');
+  if (puntos >= productoActual.costo) {
+    document.getElementById('modalPointsMsg').textContent = '¡Tienes puntos suficientes para canjear este producto!';
+    document.getElementById('confirmCanjeBtn').disabled = false;
+  } else {
+    document.getElementById('modalPointsMsg').textContent = 'No tienes puntos suficientes para canjear este producto.';
+    document.getElementById('confirmCanjeBtn').disabled = true;
+  }
+}
+
+document.getElementById('closeModalBtn').onclick = function() {
+  document.getElementById('modal-canjear').style.display = 'none';
+};
+document.getElementById('prevColor').onclick = function() {
+  colorIndex = (colorIndex - 1 + productoActual.imagenes.length) % productoActual.imagenes.length;
+  document.getElementById('carouselImage').src = productoActual.imagenes[colorIndex];
+};
+document.getElementById('nextColor').onclick = function() {
+  colorIndex = (colorIndex + 1) % productoActual.imagenes.length;
+  document.getElementById('carouselImage').src = productoActual.imagenes[colorIndex];
+};
+document.getElementById('confirmCanjeBtn').onclick = function() {
+  const puntos = parseInt(localStorage.getItem('userPoints') || localStorage.getItem('puntos') || '0');
+  if (puntos >= productoActual.costo) {
+    localStorage.setItem('userPoints', puntos - productoActual.costo);
+    if(localStorage.getItem('puntos')) localStorage.setItem('puntos', puntos - productoActual.costo);
+    mostrarDatosUsuarioRewards();
+    alert('¡Canje realizado con éxito!');
+    document.getElementById('modal-canjear').style.display = 'none';
+  }
+};
+
+// Crear partículas espaciales dinámicamente
+function crearParticulasEspaciales() {
+  const contenedor = document.getElementById('spaceParticles');
+  if (!contenedor) return;
+  
+  // Limpiar partículas existentes
+  contenedor.innerHTML = '';
+  
+  for (let i = 0; i < 15; i++) {
+    const particula = document.createElement('div');
+    particula.className = 'particle';
+    particula.style.left = Math.random() * 100 + '%';
+    particula.style.animationDelay = Math.random() * 6 + 's';
+    particula.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    contenedor.appendChild(particula);
+  }
+}
+
+// Función específica para el login
+function inicializarLogin() {
+  crearParticulasEspaciales();
+}
+
+// Ejecutar animaciones temáticas
+window.addEventListener('DOMContentLoaded', () => {
+  // Verificar si estamos en la página de login
+  if (document.querySelector('.login-container')) {
+    inicializarLogin();
+  }
+  
+  // Verificar si estamos en la página de rewards
+  if (document.querySelector('.rewards-main')) {
+    mostrarDatosUsuarioRewards && mostrarDatosUsuarioRewards();
+    crearParticulasEspaciales();
+    
+    const canjearBtns = document.querySelectorAll('.reward-card button');
+    canjearBtns.forEach((btn, i) => {
+      btn.onclick = function() {
+        abrirModalCanje(i % productosRecompensa.length);
+      };
+    });
+  }
+});

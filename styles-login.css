@@ -126,7 +126,7 @@ input::placeholder {
 button {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--secondary-color);
   color: white;
   border: none;
   border-radius: 8px;
@@ -156,3 +156,316 @@ button:active {
   max-width: 400px;
   margin: 20px;
 }
+
+/* Animaciones temáticas de astronautas y Campuslands */
+
+/* Fondo animado con estrellas */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Astronauta flotante */
+.astronaut-float {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+  z-index: 100;
+  filter: drop-shadow(0 0 10px rgba(249, 200, 70, 0.5));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(5deg); }
+  50% { transform: translateY(-20px) rotate(-5deg); }
+}
+
+/* Cohete animado */
+.rocket-animation {
+  position: fixed;
+  bottom: -50px;
+  left: -50px;
+  font-size: 2rem;
+  animation: rocket 8s linear infinite;
+  z-index: 100;
+}
+
+@keyframes rocket {
+  0% { 
+    transform: translateX(-100px) translateY(0px) rotate(45deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateX(calc(100vw + 100px)) translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Partículas espaciales */
+.space-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #f9c846;
+  border-radius: 50%;
+  animation: particle-float 6s linear infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0px);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Animación del contenedor de login */
+.login-container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 20px;
+  animation: login-pulse 4s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(249, 200, 70, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.login-container:hover::before {
+  opacity: 1;
+  transform: rotate(45deg) translateX(100%);
+}
+
+@keyframes login-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Animación del título */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  animation: title-glow 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 20px rgba(249, 200, 70, 0.5);
+}
+
+@keyframes title-glow {
+  0% { text-shadow: 0 0 20px rgba(249, 200, 70, 0.5); }
+  100% { text-shadow: 0 0 30px rgba(249, 200, 70, 0.8), 0 0 40px rgba(249, 200, 70, 0.3); }
+}
+
+/* Animación de los inputs */
+input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(249, 200, 70, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+input:focus::before {
+  left: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 0 20px rgba(249, 200, 70, 0.3);
+  transform: scale(1.02);
+}
+
+/* Animación del botón */
+button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '🚀';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+button:hover::before {
+  left: 10px;
+  opacity: 1;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3), 0 0 20px rgba(249, 200, 70, 0.4);
+  background: linear-gradient(135deg, #f9c846 0%, #667eea 100%);
+  color: #333;
+}
+
+button:active {
+  transform: translateY(0) scale(1.02);
+}
+
+/* Estrella flotante en el login */
+.login-star {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 2rem;
+  animation: star-bounce 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes star-bounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+}
+
+/* austronauta */
+
+@keyframes flotarAstronauta {
+    0% { bottom: 0; right: 5%; }
+    50% { bottom: 20px; right: 7%; }
+    100% { bottom: 0; right: 5%; }
+}
+
+.astronaut{
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    width: 300px;
+    height: 300px;
+    z-index: 1000;
+    animation: flotarAstronauta 5s ease-in-out infinite;
+}
+
+/* Planeta Campuslands */
+.campuslands-planet {
+  position: fixed;
+  top: 250px;
+  left: 200px;
+  font-size: 6rem;
+  z-index: 100;
+  animation: planet-rotate 20s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(249, 200, 70, 0.6));
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.campuslands-planet:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 30px rgba(249, 200, 70, 0.8));
+}
+
+@keyframes planet-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Efecto de anillos del planeta */
+.campuslands-planet::before {
+  content: '💫';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  font-size: 2rem;
+  animation: star-twinkle 2s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.campuslands-planet::after {
+  content: '⭐';
+  position: absolute;
+  top: 10px;
+  right: -15px;
+  font-size: 1.5rem;
+  animation: star-twinkle 3s ease-in-out infinite reverse;
+  opacity: 0.8;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+

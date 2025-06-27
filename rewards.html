@@ -6,6 +6,11 @@
   <link rel="stylesheet" href="styles-rewards.css">
 </head>
 <body>
+  <!-- Elementos animados temáticos -->
+  <div class="astronaut-float">🧑‍🚀</div>
+  <div class="rocket-animation">🚀</div>
+  <div class="space-particles" id="spaceParticles"></div>
+  
   <header class="main-header">
     <div class="header-left">
       <img src="https://campuslands.com/_astro/LogoCampuslands.B1kb7Hd-_1iubnD.svg" alt="logo" class="logo">
@@ -19,8 +24,8 @@
   </header>
   <main class="rewards-main">
     <section class="rewards-header">
-      <h1>🎁 Recompensas Campuslands</h1>
-      <p>Canjea tus puntos por premios increíbles. ¡Sigue aprendiendo y gana!</p>
+      <h1 class="title-rewards">🎁 Recompensas Campuslands</h1>
+      <p class="subtitle-rewards">Canjea tus puntos por premios increíbles. ¡Sigue aprendiendo y gana!</p>
       <div class="user-card">
         <div class="user-avatar"></div>
         <div>
@@ -37,22 +42,75 @@
     </section>
     <section class="rewards-list">
       <div class="reward-card">
-        <img src="https://img.icons8.com/color/96/t-shirt.png" alt="Camiseta Campuslands">
+        <img src="./img recompensas/descarga.png" alt="Camiseta Campuslands" >
         <h3>👕 Camiseta Campuslands</h3>
         <p>📁 Categoría: Merch</p>
         <p>⭐ Costo: 1500 puntos</p>
         <button>Canjear</button>
       </div>
       <div class="reward-card">
-        <img src="https://img.icons8.com/color/96/water-bottle.png" alt="Botella térmica">
+        <img src="./img recompensas/gorra.png" alt="Botella térmica">
+        <h3>🧢 Gorra Campuslands</h3>
+        <p>📁 Categoría: Merch</p>
+        <p>⭐ Costo: 2000 puntos</p>
+        <button>Canjear</button>
+      </div>
+
+      <div class="reward-card">
+        <img src="./img recompensas/buso.png" alt="Botella térmica">
+        <h3>🧥 Buso Campuslands</h3>
+        <p>📁 Categoría: Merch</p>
+        <p>⭐ Costo: 2000 puntos</p>
+        <button>Canjear</button>
+      </div>
+
+      <div class="reward-card">
+        <img src="./img recompensas/libreta.png" alt="Botella térmica">
+        <h3>📗 Libreta Campuslands</h3>
+        <p>📁 Categoría: Merch</p>
+        <p>⭐ Costo: 2000 puntos</p>
+        <button>Canjear</button>
+      </div>
+
+      <div class="reward-card">
+        <img src="./img recompensas/termo.png" alt="Botella térmica">
         <h3>🧴 Botella térmica</h3>
         <p>📁 Categoría: Merch</p>
         <p>⭐ Costo: 2000 puntos</p>
         <button>Canjear</button>
       </div>
+
+      <div class="reward-card">
+        <img src="./img recompensas/stiker.png" alt="Botella térmica">
+        <h3>🧑‍🚀 Stiker Campuslands</h3>
+        <p>📁 Categoría: Merch</p>
+        <p>⭐ Costo: 2000 puntos</p>
+        <button>Canjear</button>
+      </div>
+
+      
       <!-- Más tarjetas aquí -->
     </section>
   </main>
+
+  <!-- Modal para canjear -->
+  <div id="modal-canjear" class="modal-canjear" style="display:none;">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModalBtn">&times;</span>
+      <div class="carousel-container">
+        <img id="carouselImage" src="" alt="Producto" class="carousel-img">
+        <div class="carousel-controls">
+          <button id="prevColor">&#8592;</button>
+          <button id="nextColor">&#8594;</button>
+        </div>
+      </div>
+      <h2 id="modalProductName"></h2>
+      <p id="modalProductCategory"></p>
+      <p id="modalProductCost"></p>
+      <p id="modalPointsMsg"></p>
+      <button id="confirmCanjeBtn">Confirmar canje</button>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
